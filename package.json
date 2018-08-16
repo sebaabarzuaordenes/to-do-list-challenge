@@ -1,0 +1,23 @@
+{
+  "name": "to-do-list-challenge",
+  "version": "1.0.0",
+  "description": "to-do-list-challenge",
+  "main": "app.js",
+  "dependencies": {},
+  "devDependencies": {
+    "unit.js": "^2.0.0"
+  },
+  "scripts": {
+    "test": "npx mocha --watch use_case/___test___/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cemoralesarmijo/to-do-list-challenge.git"
+  },
+  "author": "César Alejandro Morales Armijo",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/cemoralesarmijo/to-do-list-challenge/issues"
+  },
+  "homepage": "https://github.com/cemoralesarmijo/to-do-list-challenge#readme"
+}
