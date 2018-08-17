@@ -1,8 +1,9 @@
-# to-do list API
+# TO-DO LIST API
+
 A [Node js](https://nodejs.org/en/) application
 
 
-## Prerequisites:
+## Prerequisites
 
 * This project require [Node.js](https://nodejs.org/) v8+ or newer
 
@@ -24,7 +25,7 @@ $ cd path/of/your/Project
 $ yarn install
 ```
 
-## Database migration
+## Database Migration
 
 ```sh
 $ cd path/of/your/Project
@@ -37,7 +38,6 @@ $ npx sequelize db:migrate
 $ cd path/of/your/Project
 $ npx sequelize db:migrate:undo:all
 ```
-
 
 
 ## Unit Test
@@ -58,7 +58,7 @@ $ yarn test
  | app    | link |
  | ------ | ------ |
  | DOCUMENTATION | [GOOGLE DRIVE LINK](https://drive.google.com/drive/folders/1A8D6Y8TKQzjK2fgIWbdpqCojV5ZGONj3?usp=sharing) 
-  POSTMAN | [COLLECTION LINK] |(https://www.getpostman.com/collections/0119628a1e215744fe58) |
+  | POSTMAN | [COLLECTION LINK](https://www.getpostman.com/collections/0119628a1e215744fe58) |
 
 
 
