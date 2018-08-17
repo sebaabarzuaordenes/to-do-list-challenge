@@ -4,6 +4,8 @@
   "description": "to-do-list-challenge",
   "main": "app.js",
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
     "pg": "^7.4.3",
     "sequelize": "^4.38.0"
   },
@@ -11,8 +13,8 @@
     "eslint": "^5.3.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
-    "unit.js": "^2.0.0",
-    "sequelize-cli": "^4.0.0"
+    "sequelize-cli": "^4.0.0",
+    "unit.js": "^2.0.0"
   },
   "scripts": {
     "test": "mocha --watch use_case/___test___/",

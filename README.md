@@ -3,18 +3,16 @@ A [Node js](https://nodejs.org/en/) application
 
 
 ## Prerequisites:
---
 
 * This project require [Node.js](https://nodejs.org/) v8+ or newer
 
 ## Technologies
---
 
-* node.js
-* unit.js   
+* Express
+* Node.js  
+* Sequelize
 
 ## Installation
---
 
 If you have already cloned the project, you can install the dependencies
 
@@ -26,11 +24,23 @@ $ cd path/of/your/Project
 $ yarn install
 ```
 
+## Database migration
+
+```sh
+$ cd path/of/your/Project
+$ npx sequelize db:migrate
+```
+
+## Delete Database
+
+```sh
+$ cd path/of/your/Project
+$ npx sequelize db:migrate:undo:all
+```
 
 
 
 ## Unit Test
---
 
 ```sh
 $ cd path/of/your/Project
@@ -39,7 +49,6 @@ $ yarn test
 
 
 ## Other
---
 > **Note:**
 > Documentation links and more.
 > 
@@ -48,8 +57,8 @@ $ yarn test
 
  | app    | link |
  | ------ | ------ |
- | Development documentation | [google drive link (public)](https://drive.google.com/drive/folders/1A8D6Y8TKQzjK2fgIWbdpqCojV5ZGONj3?usp=sharing) |
-
+ | DOCUMENTATION | [GOOGLE DRIVE LINK](https://drive.google.com/drive/folders/1A8D6Y8TKQzjK2fgIWbdpqCojV5ZGONj3?usp=sharing) 
+  POSTMAN | [COLLECTION LINK] |(https://www.getpostman.com/collections/0119628a1e215744fe58) |
 
 
 

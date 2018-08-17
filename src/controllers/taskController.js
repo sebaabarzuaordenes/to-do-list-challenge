@@ -7,7 +7,7 @@ async function createTask (user, task){
     throw e;
   }
 };
-mode.exports = {
+module.exports = {
   createTask: createTask
 };
 
