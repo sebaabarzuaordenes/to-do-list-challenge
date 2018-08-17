@@ -13,10 +13,8 @@ async function taskCreate(user, task, taskRepository) {
     throw new Error('The field description is required.');
   }
 
-  // let countTaskByUser = await taskRepository.getCountTaskByUser(user.id);
-  // task.number = countTaskByUser++;
-  // task.status = 'pending';
-  // return await taskRepository.create(task);
+  task.status = 'pending';
+  return await taskRepository.create(task);
 }
 
 module.exports = taskCreate;

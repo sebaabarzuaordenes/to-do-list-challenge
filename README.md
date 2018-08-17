@@ -23,7 +23,7 @@ If you have already cloned the project, you can install the dependencies
 
 ```sh
 $ cd path/of/your/Project
-$ npm install
+$ yarn install
 ```
 
 
@@ -34,7 +34,7 @@ $ npm install
 
 ```sh
 $ cd path/of/your/Project
-$ npm run test
+$ yarn test
 ```
 
 
