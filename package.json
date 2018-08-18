@@ -23,7 +23,8 @@
   "scripts": {
     "test": "npx mocha --watch src/use_case/___test___/",
     "lint": "eslint . --ext .js",
-    "lint-fix": "eslint --fix . --ext .js"
+    "lint-fix": "eslint --fix . --ext .js",
+    "start": "nodemon app"
   },
   "repository": {
     "type": "git",

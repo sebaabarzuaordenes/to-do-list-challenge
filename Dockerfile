@@ -2,7 +2,7 @@
 FROM node:8.10
 
 # Instala pm2 como paquete global
-# RUN yarn global add eslint
+RUN yarn global add nodemon
 
 # Define el directorio de trabajo para el resto de los comandos
 WORKDIR /usr/src/app

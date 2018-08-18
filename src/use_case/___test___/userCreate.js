@@ -1,5 +1,6 @@
 const { value } = require('unit.js');
 const userCreate = require('../userCreate');
+// var md5 = require('md5');
 
 const userRepository = {
   create: async () => true,
@@ -10,7 +11,7 @@ describe('Test unitarios User Create', () => {
     const user = {
       name: 'Test',
       user: 'test',
-      psw: 'psw',
+      password: 'psw',
       profile: 1,
     };
     const result = await userCreate(user, userRepository);

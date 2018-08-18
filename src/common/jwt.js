@@ -3,22 +3,26 @@ if(process.env.NODE_ENV === undefined){
   require('dotenv').config();
 }
 
+const jwtConfig = {
+  'secret': process.env.JWT_SECRET,
+  'expiresIn': process.env.JWT_EXPIRATION
+};
+
 module.exports = class {
   constructor(user) {
-    this.secretOrPrivateKey = process.env.JWT_SECRET;
-    this.secretOrPublicKey = process.env.JWT_SECRET;
-    this.options = { expiresIn: process.env.JWT_EXPIRATION };
-    this.user = user;
+    this.secretOrPrivateKey = jwtConfig.secret;
+    this.secretOrPublicKey = jwtConfig.secret;
+    this.options = { expiresIn: jwtConfig.expiresIn };
   }
 
   config() {
     return jwtConfig;
   }
 
-  createToken() {
+  createToken(payload) {
     return new Promise((resolve, reject) =>
       jwt.sign(
-        { data: user },
+        { data: payload },
         this.secretOrPrivateKey,
         this.options,
         (err, obj) => (err ? reject(err) : resolve(obj))

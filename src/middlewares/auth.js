@@ -1,5 +1,5 @@
-const Auth = require('../common/jwt');
-const auth = new Auth();
+const Jwt = require('../common/jwt');
+const jwt = new Jwt();
 
 module.exports = async function handler(req, res, next) {
   try {
@@ -9,8 +9,8 @@ module.exports = async function handler(req, res, next) {
 
     const token = req.headers.authorization.replace('Bearer', '').trim();
 
-    auth.verify(token);
-    auth.tokenExists(token);
+    jwt.verify(token);
+    jwt.tokenExists(token);
 
     next();
   } catch (e) {
