@@ -5,7 +5,11 @@
   "main": "app.js",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "dotenv": "^6.0.0",
     "express": "^4.16.3",
+    "jsonwebtoken": "^8.3.0",
+    "md5": "^2.2.1",
+    "path": "^0.12.7",
     "pg": "^7.4.3",
     "sequelize": "^4.38.0"
   },
@@ -17,7 +21,7 @@
     "unit.js": "^2.0.0"
   },
   "scripts": {
-    "test": "mocha --watch use_case/___test___/",
+    "test": "npx mocha --watch src/use_case/___test___/",
     "lint": "eslint . --ext .js",
     "lint-fix": "eslint --fix . --ext .js"
   },
