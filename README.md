@@ -9,9 +9,10 @@ A [Node js](https://nodejs.org/en/) application
 
 ## Technologies
 
-* Express
+* Express js
 * Node.js  
-* Sequelize
+* Sequelize js
+* Unit js
 
 ## Installation
 
@@ -21,30 +22,64 @@ If you have already cloned the project, you can install the dependencies
 > For now you can only run the test
 
 ```sh
-$ cd path/of/your/Project
+$ cd path/of/your/project
 $ yarn install
+or
+$ npm install
+```
+
+## Environment configuration
+
+Copy the content of the file `env_sample` manually  into another file called `.env` and modify the values of the variables with your text editor
+
+```
+$ cd path/of/your/project
+$ cp env_sample .env
+```
+
+> **Note:**
+> The values of the variables depend on your local environment, but remember that you can perform the test of this api
+> using docker which is explained below.
+
+```
+$ cd path/of/yourproyect
+$ cp env_sample .env
 ```
 
 ## Database Migration
 
 ```sh
-$ cd path/of/your/Project
+$ cd path/of/your/project
 $ npx sequelize db:migrate
 ```
 
 ## Delete Database
 
 ```sh
-$ cd path/of/your/Project
+$ cd path/of/your/project
 $ npx sequelize db:migrate:undo:all
 ```
 
+## Docker deployment
+
+You'll need `docker` and `docker-compose` installed in your system.
+
+For development you'll need to copy `docker-compose.yaml` file in the main folder where this project is located
+
+```sh
+$ cd path/of/your/project
+$ cp docker-compose.yaml ../docker-compose.yaml
+$ cd ..
+$ docker-compose up -d
+```
 
 ## Unit Test
 
 ```sh
-$ cd path/of/your/Project
+$ cd path/of/your/project
 $ yarn test
+or
+$ npm test
 ```
 
 

@@ -1,0 +1,53 @@
+version: '3.6'
+services:
+  postgres:
+    container_name: postgres_database_alexis
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_USER=root
+      - POSTGRES_DB=todolist
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d 
+  mysql:
+    container_name: mysql_database
+    image: mysql:5.7.19
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=todolist
+    volumes:
+      - ./mysql-data:/var/lib/mysql:rw
+    ports:
+      - "3306:3306"    
+  api_todolist:
+    container_name: api_todolist
+    build:
+     context: ./todo/
+    volumes:
+      - ./todo/:/usr/src/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+      - mysql   
+
+
+
+# Comando para crear e iniciar los contenedores
+# Nota: Cuando se ejecuta por primera vez construirá
+# las imágenes de cada servicio y luego creará el contenedor.
+# Posteriormente sólo creará los contenedores a apartir de las
+# imágenes creadas anteriormente
+# 
+# docker-compose up -d
+
+# Comando para detener y remover contenedores
+# docker-compose down
+
+
+#sudo docker-compose -f docker-compose.yml up
+
+
+    

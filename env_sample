@@ -1,0 +1,10 @@
+NODE_ENV=development
+HTTP_PORT=9000
+DB_HOSTNAME=127.0.0.1
+DB_USERNAME=root
+DB_PASSWORD=root
+DB_NAME=todolist
+DIALEC=postgres
+
+JWT_SECRET=ssdsdsdds
+JWT_EXPIRATION=1h
