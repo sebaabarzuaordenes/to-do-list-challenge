@@ -17,8 +17,17 @@ async function authentication (user){
   }
 };
 
+async function getAllUsers (){
+  try {
+    return await userRepository.findAll();
+  } catch (e) {
+    throw e;
+  }
+};
+
 module.exports = {
   userCreate: userCreate,
+  getAllUsers: getAllUsers,
   authentication: authentication
 };
 

@@ -1,5 +1,10 @@
-const Profiles = {
+// {
+//   "ADMINISTRATOR": "1",
+//   "USER": "2"
+// }
+
+const profiles = {
   ADMINISTRATOR: 1,
-  USER: 2,
+  USER: 2
 };
-module.exports = Profiles;
+module.exports = profiles;

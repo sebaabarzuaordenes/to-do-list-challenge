@@ -9,9 +9,7 @@ module.exports = async function handler(req, res, next) {
 
     const token = req.headers.authorization.replace('Bearer', '').trim();
 
-    jwt.verify(token);
-    jwt.tokenExists(token);
-
+    jwt.verifyToken(token);
     next();
   } catch (e) {
     res.status(401);

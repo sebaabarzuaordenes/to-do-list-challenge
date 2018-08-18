@@ -1,12 +1,11 @@
 const express = require("express");
-const path = require('path');
 const bodyParser = require('body-parser');
 const app = express();
 if (process.env.NODE_ENV === undefined) {
   require('dotenv').config();
 }
-const taskController = require('./src/controllers/taskController');
-const  { userController, authentication}  = require('./src/controllers');
+// const taskController = require('./src/controllers/taskController');
+const  { userController, taskController}  = require('./src/controllers');
 const { auth }  = require('./src/middlewares');
 
 app.use(bodyParser.urlencoded({
@@ -15,13 +14,23 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json({ type: 'application/json' }));
 
 app.listen(process.env.HTTP_PORT, () => {
-  console.log('STARTS');
+  console.log('Aplication running at port', process.env.HTTP_PORT);
 });
 
-app.post('/', (req, res) => {
+// P U B L I C  R O U T E S
+app.get('/', (req, res) => {
   res.send('api start');
 });
 
+app.get('/getAllTaks', async (req, res) => {
+  const resp = await taskController.getAllTasks();
+  res.send(resp);
+});
+
+app.get('/getAllUsers', async (req, res) => {
+  const resp = await userController.getAllUsers();
+  res.send(resp);
+});
 
 app.post('/login', async (req, res, next) => {
   const user = req.body;
@@ -33,9 +42,6 @@ app.post('/login', async (req, res, next) => {
     next(e);
   }
 });
-
-authentication
-
 app.post('/userCreate', async (req, res, next) => {
   const user = req.body;
   try {
@@ -46,12 +52,15 @@ app.post('/userCreate', async (req, res, next) => {
     next(e);
   }
 });
-// middleware auth
+
+// M I D D L E W A R E
 app.use(auth);
+
+// P R I V A T E  R O U T E S
 app.post('/createTask', async (req, res, next) => {
   const task = req.body;
   try {
-    const resp = await taskController.createTask(req.user, task);
+    const resp = await taskController.createTask(req, task);
     res.send(resp);
   }
   catch (e) {
@@ -60,6 +69,6 @@ app.post('/createTask', async (req, res, next) => {
 });
 
 app.use(function (err, req, res, next) {
-  console.error(err.stack);
+  console.error('err.stack', err.stack);
   res.status(500).send(err.message);
 });

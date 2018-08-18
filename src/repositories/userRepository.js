@@ -13,7 +13,13 @@ function findOne(user) {
   });
 };
 
+function findAll() {
+  return models.User.findAll();
+};
+
+
 module.exports = {
   create: create,
-  findOne: findOne
+  findOne: findOne,
+  findAll: findAll
 };

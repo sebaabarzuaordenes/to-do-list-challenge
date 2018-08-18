@@ -1,5 +1,6 @@
 const Jwt = require('../common/jwt');
 const jwt = new Jwt();
+const md5 = require('md5');
 async function login(user, userRepository) {
   if (!user) {
     throw new Error('The user entered does not be falsy.');
@@ -8,19 +9,20 @@ async function login(user, userRepository) {
   if (!user.userName || !user.password) {
     throw new Error('All fields are required.');
   }
+
+  user.password = md5(user.password);
   let userFound = await userRepository.findOne(user);
 
-  if(!user) {
+  if(!userFound) {
     throw new Error('User not found.');
   }
 
   const payload = {
+    profile: user.profile,
     userName: user.userName,
-    profile: user.profile
   };
 
   const token = await jwt.createToken(payload);
-  console.log('token', token);
   const responde = {
     data: {
       'token': token,

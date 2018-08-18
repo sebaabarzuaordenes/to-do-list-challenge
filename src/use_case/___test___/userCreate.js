@@ -1,6 +1,5 @@
 const { value } = require('unit.js');
 const userCreate = require('../userCreate');
-// var md5 = require('md5');
 
 const userRepository = {
   create: async () => true,
