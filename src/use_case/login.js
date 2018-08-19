@@ -18,7 +18,7 @@ async function login(user, userRepository) {
   }
 
   const payload = {
-    profile: user.profile,
+    profile: userFound.profile,
     userName: user.userName,
   };
 

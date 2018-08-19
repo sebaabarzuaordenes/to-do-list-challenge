@@ -1,5 +1,5 @@
 const { value } = require('unit.js');
-const useCaseUpdateTaskDescriptionById = require('../updateTaskDescription');
+const useCaseUpdateTaskDescriptionById = require('../updateTaskDescriptionById');
 
 const taskRepository = {
   updateTaskDescriptionById: async () => true,

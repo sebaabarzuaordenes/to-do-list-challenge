@@ -13,7 +13,6 @@ async function updateTaskDescriptionById(task, taskRepository) {
   }
 
   const updateDescription = await taskRepository.updateTaskDescriptionById(task);
-  console.log('use case updateDescription', updateDescription)
   return updateDescription;
 }
 

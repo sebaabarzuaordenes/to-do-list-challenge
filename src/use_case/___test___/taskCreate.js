@@ -11,10 +11,7 @@ describe('Test unitarios task create', () => {
     const task = {
       description: 'primera tarea',
     };
-    const user = {
-      profile: ADMINISTRATOR,
-    };
-    const result = await taskCreate(user, task, taskRepository);
+    const result = await taskCreate(task, taskRepository);
     value(result).isTrue();
   });
 
@@ -22,12 +19,9 @@ describe('Test unitarios task create', () => {
     const task = {
       description: '',
     };
-    const user = {
-      profile: 1,
-    };
     let result;
     try {
-      await taskCreate(user, task, taskRepository);
+      await taskCreate(task, taskRepository);
     } catch (error) {
       result = error.message;
     }
@@ -36,13 +30,9 @@ describe('Test unitarios task create', () => {
 
   it('Debe retornar "Task does not be falsy." si la task se creo con exito', async () => {
     const task = null;
-    const user = {
-      profile: 1,
-    };
-
     let result;
     try {
-      await taskCreate(user, task, taskRepository);
+      await taskCreate(task, taskRepository);
     } catch (error) {
       result = error.message;
     }
