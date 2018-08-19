@@ -1,12 +1,23 @@
-const createTaskUseCase = require('../use_case/createTask');
+const useCaseTaskCreate = require('../use_case/taskCreate');
+const useCaseUpdateTaskDescriptionById = require('../use_case/updateTaskDescriptionById');
 const taskRepository = require('../repositories/taskRepository');
-async function createTask (req, task){
+
+async function taskCreate (task){
   try {
-    return await createTaskUseCase(req, task, taskRepository);
+    return await useCaseTaskCreate(task, taskRepository);
   } catch (e) {
     throw e;
   }
 };
+
+async function updateDescriptionById (task){
+  try {
+    return await useCaseUpdateTaskDescriptionById(task, taskRepository);
+  } catch (e) {
+    throw e;
+  }
+};
+
 
 async function getAllTasks (){
   try {
@@ -17,8 +28,9 @@ async function getAllTasks (){
 };
 
 module.exports = {
-  createTask: createTask,
-  getAllTasks: getAllTasks
+  taskCreate: taskCreate,
+  getAllTasks: getAllTasks,
+  updateDescriptionById: updateDescriptionById
   
 };
 

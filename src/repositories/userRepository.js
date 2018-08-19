@@ -10,11 +10,23 @@ function findOne(user) {
         userName: user.userName,
         password: user.password
     }
+  })
+  .then(user => {
+    return user;
+  })
+  .catch(e => {
+    return e;
   });
 };
 
 function findAll() {
-  return models.User.findAll();
+  return models.User.findAll()
+  .then(User => {
+    return User;
+  })
+  .catch(e => {
+    return e;
+  });
 };
 
 

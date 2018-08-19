@@ -23,13 +23,15 @@ async function login(user, userRepository) {
   };
 
   const token = await jwt.createToken(payload);
-  const responde = {
-    data: {
-      'token': token,
-      'expiresIn': jwt.config().expiresIn
-    }
-  };
-  return responde
+  // const responde = {
+  //   data: {
+  //     'token': token,
+  //     'expiresIn': jwt.config().expiresIn
+  //   }
+  // };
+  return {
+      token: token
+  }
 }
 
 module.exports = login;

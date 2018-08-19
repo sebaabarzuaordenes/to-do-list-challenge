@@ -18,6 +18,17 @@ app.listen(process.env.HTTP_PORT, () => {
 });
 
 // P U B L I C  R O U T E S
+
+// app.patch('/tasks/:task_id', (req, res) => {
+//   console.log('req.params', req.params);
+//   console.log('req.body', req);
+//   res.send('api start');
+// });
+
+app.patch('/updateTaskDescription', (req, res) => {
+  res.send('api start');
+});
+
 app.get('/', (req, res) => {
   res.send('api start');
 });
@@ -58,9 +69,22 @@ app.use(auth);
 
 // P R I V A T E  R O U T E S
 app.post('/createTask', async (req, res, next) => {
+  // console.log('createTask', req);
   const task = req.body;
   try {
-    const resp = await taskController.createTask(req, task);
+    const resp = await taskController.taskCreate(req, task);
+    res.send(resp);
+  }
+  catch (e) {
+    next(e);
+  }
+});
+
+app.patch('/updateTaskDescriptionById', async (req, res, next) => {
+  const task = req.body;
+  // console.log('updateTaskDescriptionById => { task } ', task);
+  try {
+    const resp = await taskController.updateDescriptionById(task);
     res.send(resp);
   }
   catch (e) {

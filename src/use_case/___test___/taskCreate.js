@@ -1,5 +1,5 @@
 const { value } = require('unit.js');
-const taskCreate = require('../createTask');
+const taskCreate = require('../taskCreate');
 const { ADMINISTRATOR } = require('../../consts/profiles');
 
 const taskRepository = {
@@ -34,7 +34,7 @@ describe('Test unitarios task create', () => {
     value(result).is('The field description is required.');
   });
 
-  it('Debe retornar "Task does not be falsy." si task es undefined', async () => {
+  it('Debe retornar "Task does not be falsy." si la task se creo con exito', async () => {
     const task = null;
     const user = {
       profile: 1,

@@ -1,6 +1,7 @@
 const createUserUseCase = require('../use_case/userCreate');
 const loginUseCase = require('../use_case/login');
 const userRepository = require('../repositories/userRepository');
+
 async function userCreate (user){
   try {
     return await createUserUseCase(user, userRepository);

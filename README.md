@@ -60,6 +60,13 @@ $ cd path/of/your/project
 $ npx sequelize db:migrate:undo:all
 ```
 
+## Run App
+
+```sh
+$ cd path/of/your/project
+$ npm start
+```
+
 ## Docker deployment
 
 You'll need `docker` and `docker-compose` installed in your system.
