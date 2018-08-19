@@ -1,8 +1,8 @@
 const { value } = require('unit.js');
-const useCaseUpdateTaskStatusById = require('../updateTaskStatusById');
+const useCaseUpdateTaskToDoneById = require('../updateTaskToDoneById');
 
 const taskRepository = {
-  updateTaskStatusById: async () => true,
+  updateTaskToDoneById: async () => true,
 }
 
 describe('Test unitarios update task status by id', async () => {
@@ -15,7 +15,7 @@ describe('Test unitarios update task status by id', async () => {
     };
     let result;
     try {
-      await useCaseUpdateTaskStatusById(authorization, task, taskRepository);
+      await useCaseUpdateTaskToDoneById(authorization, task, taskRepository);
     } catch (error) {
       result = error.message;
     }
@@ -33,7 +33,7 @@ describe('Test unitarios update task status by id', async () => {
 
     let result;
     try {
-      await useCaseUpdateTaskStatusById(req, task, taskRepository);
+      await useCaseUpdateTaskToDoneById(req, task, taskRepository);
     } catch (error) {
       result = error.message;
     }
@@ -47,7 +47,7 @@ describe('Test unitarios update task status by id', async () => {
       status: "done"
     };
 
-    const result = await useCaseUpdateTaskStatusById(authorization, task, taskRepository);
+    const result = await useCaseUpdateTaskToDoneById(authorization, task, taskRepository);
     value(result).isTrue();
   });
 

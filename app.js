@@ -69,7 +69,6 @@ app.use(auth);
 
 // P R I V A T E  R O U T E S
 app.post('/createTask', async (req, res, next) => {
-  // console.log('createTask', req);
   const task = req.body;
   try {
     const resp = await taskController.taskCreate(req, task);
@@ -82,9 +81,21 @@ app.post('/createTask', async (req, res, next) => {
 
 app.patch('/updateTaskDescriptionById', async (req, res, next) => {
   const task = req.body;
-  // console.log('updateTaskDescriptionById => { task } ', task);
   try {
     const resp = await taskController.updateDescriptionById(task);
+    res.send(resp);
+  }
+  catch (e) {
+    next(e);
+  }
+});
+
+app.patch('/updateTaskToDoneById', async (req, res, next) => {
+  const task = req.body;
+  console.log('task', task);
+  console.log('req.headers', req.headers);
+  try {
+    const resp = await taskController.updateTaskToDoneById(req.headers.authorization, task);
     res.send(resp);
   }
   catch (e) {

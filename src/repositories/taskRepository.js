@@ -26,7 +26,19 @@ function updateTaskDescriptionById(task) {
     { where: { id: task.id } }
   )
   .then(() => {
-    // console.log('result:', result);
+    return true
+  })
+  .catch(e => {
+    return e;
+  });
+ };
+
+ function updateTaskToDoneById(task) {
+  return models.Task.update(
+    {status: 'done'},
+    { where: { id: task.id } }
+  )
+  .then(() => {
     return true
   })
   .catch(e => {
@@ -38,5 +50,6 @@ function updateTaskDescriptionById(task) {
 module.exports = {
   create: create,
   findAll: findAll,
-  updateTaskDescriptionById: updateTaskDescriptionById
+  updateTaskDescriptionById: updateTaskDescriptionById,
+  updateTaskToDoneById: updateTaskToDoneById
 };

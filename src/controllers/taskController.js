@@ -1,5 +1,6 @@
 const useCaseTaskCreate = require('../use_case/taskCreate');
 const useCaseUpdateTaskDescriptionById = require('../use_case/updateTaskDescriptionById');
+const useCaseUpdateTaskToDoneById = require('../use_case/updateTaskToDoneById');
 const taskRepository = require('../repositories/taskRepository');
 
 async function taskCreate (task){
@@ -19,6 +20,15 @@ async function updateDescriptionById (task){
 };
 
 
+async function updateTaskToDoneById (authorization, task){
+  try {
+    return await useCaseUpdateTaskToDoneById(authorization, task, taskRepository);
+  } catch (e) {
+    throw e;
+  }
+};
+
+
 async function getAllTasks (){
   try {
     return await taskRepository.findAll();
@@ -30,7 +40,8 @@ async function getAllTasks (){
 module.exports = {
   taskCreate: taskCreate,
   getAllTasks: getAllTasks,
-  updateDescriptionById: updateDescriptionById
+  updateDescriptionById: updateDescriptionById,
+  updateTaskToDoneById: updateTaskToDoneById
   
 };
 
