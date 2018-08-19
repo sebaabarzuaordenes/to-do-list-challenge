@@ -35,7 +35,10 @@ function updateTaskDescriptionById(task) {
 
  function updateTaskToDoneById(task) {
   return models.Task.update(
-    {status: 'done'},
+    {
+      status: 'DONE',
+      number: 1
+    },
     { where: { id: task.id } }
   )
   .then(() => {

@@ -9,7 +9,7 @@ async function taskCreate(task, taskRepository) {
     throw new Error('The field description is required.');
   }
 
-  task.status = 'pending';
+  task.status = 'PENDING';
   return await taskRepository.create(task);
 }
 

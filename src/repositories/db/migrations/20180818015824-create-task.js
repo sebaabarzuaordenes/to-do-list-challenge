@@ -14,6 +14,9 @@ module.exports = {
       status: {
         type: Sequelize.STRING
       },
+      number: {
+        type: Sequelize.INTEGER, autoIncrement:true
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

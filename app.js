@@ -4,7 +4,7 @@ const app = express();
 if (process.env.NODE_ENV === undefined) {
   require('dotenv').config();
 }
-// const taskController = require('./src/controllers/taskController');
+
 const  { userController, taskController}  = require('./src/controllers');
 const { auth }  = require('./src/middlewares');
 
@@ -18,16 +18,6 @@ app.listen(process.env.HTTP_PORT, () => {
 });
 
 // P U B L I C  R O U T E S
-
-// app.patch('/tasks/:task_id', (req, res) => {
-//   console.log('req.params', req.params);
-//   console.log('req.body', req);
-//   res.send('api start');
-// });
-
-app.patch('/updateTaskDescription', (req, res) => {
-  res.send('api start');
-});
 
 app.get('/', (req, res) => {
   res.send('api start');
@@ -65,13 +55,15 @@ app.post('/userCreate', async (req, res, next) => {
 });
 
 // M I D D L E W A R E
+
 app.use(auth);
 
 // P R I V A T E  R O U T E S
+
 app.post('/createTask', async (req, res, next) => {
   const task = req.body;
   try {
-    const resp = await taskController.taskCreate(req, task);
+    const resp = await taskController.taskCreate(task);
     res.send(resp);
   }
   catch (e) {
@@ -92,8 +84,6 @@ app.patch('/updateTaskDescriptionById', async (req, res, next) => {
 
 app.patch('/updateTaskToDoneById', async (req, res, next) => {
   const task = req.body;
-  console.log('task', task);
-  console.log('req.headers', req.headers);
   try {
     const resp = await taskController.updateTaskToDoneById(req.headers.authorization, task);
     res.send(resp);
