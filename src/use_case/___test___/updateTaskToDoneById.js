@@ -1,53 +1,62 @@
 const { value } = require('unit.js');
 const useCaseUpdateTaskToDoneById = require('../updateTaskToDoneById');
 
+const Jwt = require('../../common/jwt');
+const jwt = new Jwt();
+
+
 const taskRepository = {
   updateTaskToDoneById: async () => true,
 }
 
-describe('Test unitarios update task status by id', async () => {
+describe('Test unitarios "update Task To Done By Id" ', async () => {
+  
+  it('Debe retornar "taskIdsCollection does not be falsy." si taskIdsCollection es undefined', async () => {
+    let taskIdsCollection = null;
+    let result;
+    try {
+      await useCaseUpdateTaskToDoneById(null, taskIdsCollection, taskRepository);
+    } catch (error) {
+      result = error.message;
+    }
+    value(result).is('taskIdsCollection does not be falsy.');
+  });
+
   it('Debe retornar "Only administrator users can execute this action." si no es administrador', async () => {
     
-    const authorization ='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InByb2ZpbGUiOjIsInVzZXJOYW1lIjoidXNlck5hbWUyIn0sImlhdCI6MTUzNDY0MzcwMCwiZXhwIjoxNTM0NjQ3MzAwfQ.zbyKE9tRFa1xnS-m8Tpmd6SBbHoE-MoVKBU2x2xku0s';
-    const task = {
+    let payload = {
+      profile: 2,
+      userName: "userName2",
+    };
+    
+    let token = await jwt.createToken(payload);
+    
+    let taskIdsCollection = {
       id: 1,
-      status: "done"
     };
     let result;
     try {
-      await useCaseUpdateTaskToDoneById(authorization, task, taskRepository);
+      await useCaseUpdateTaskToDoneById(token, taskIdsCollection, taskRepository);
     } catch (error) {
       result = error.message;
     }
     value(result).is('Only administrator users can execute this action.');
   });
 
-  it('Debe retornar "Task does not be falsy." si la task es undefined', async () => {
-    
-    const req = {
-      headers: {
-        authorization: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InByb2ZpbGUiOjEsInVzZXJOYW1lIjoidXNlck5hbWUxIn0sImlhdCI6MTUzNDYzOTU1MywiZXhwIjoxNTM0NjQzMTUzfQ.GOpEcZp9pLYtE_2zaaSaGoRIULe1lJ_N-DwCYJTnLCs'
-      }
-    }
-    const task = null;
-
-    let result;
-    try {
-      await useCaseUpdateTaskToDoneById(req, task, taskRepository);
-    } catch (error) {
-      result = error.message;
-    }
-    value(result).is('Task does not be falsy.');
-  });
-
   it('Debe retornar "true" si el estatus de la tarea se actualizo con éxito', async () => {
-    const authorization ='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InByb2ZpbGUiOjEsInVzZXJOYW1lIjoidXNlck5hbWUxIn0sImlhdCI6MTUzNDY0MzMyMywiZXhwIjoxNTM0NjQ2OTIzfQ.MiBDq0NsVkPuu9FFkjNqiEO_SlCAsxISXL-dN2cgHkg';
-    const task = {
+    let payload = {
+      profile: 1,
+      userName: "userName1",
+    };
+    
+    let token = await jwt.createToken(payload);
+    
+    let taskIdsCollection = {
       id: 1,
       status: "done"
     };
 
-    const result = await useCaseUpdateTaskToDoneById(authorization, task, taskRepository);
+    const result = await useCaseUpdateTaskToDoneById(token, taskIdsCollection, taskRepository);
     value(result).isTrue();
   });
 

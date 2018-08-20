@@ -43,10 +43,11 @@ app.post('/login', async (req, res, next) => {
     next(e);
   }
 });
-app.post('/userCreate', async (req, res, next) => {
+
+app.post('/createUser', async (req, res, next) => {
   const user = req.body;
   try {
-    const resp = await userController.userCreate(user);
+    const resp = await userController.createUser(user);
     res.send(resp);
   }
   catch (e) {
@@ -63,7 +64,7 @@ app.use(auth);
 app.post('/createTask', async (req, res, next) => {
   const task = req.body;
   try {
-    const resp = await taskController.taskCreate(task);
+    const resp = await taskController.createTask(task);
     res.send(resp);
   }
   catch (e) {
@@ -86,6 +87,41 @@ app.patch('/updateTaskToDoneById', async (req, res, next) => {
   const task = req.body;
   try {
     const resp = await taskController.updateTaskToDoneById(req.headers.authorization, task);
+    res.send(resp);
+  }
+  catch (e) {
+    next(e);
+  }
+});
+
+// B U L K  R O U T E S
+
+app.post('/bulkCreateTask', async (req, res, next) => {
+  const taskslist = req.body;
+  try {
+    const resp = await taskController.bulkCreateTask(taskslist);
+    res.send(resp);
+  }
+  catch (e) {
+    next(e);
+  }
+});
+
+app.patch('/updateTaskDescriptionById', async (req, res, next) => {
+  const taskslist = req.body;
+  try {
+    const resp = await taskController.updateTaskDescriptionById(taskslist);
+    res.send(resp);
+  }
+  catch (e) {
+    next(e);
+  }
+});
+
+app.patch('/updateTaskToDonedBulk', async (req, res, next) => {
+  const taskslist = req.body;
+  try {
+    const resp = await taskController.updateTaskToDonedBulk(taskslist);
     res.send(resp);
   }
   catch (e) {

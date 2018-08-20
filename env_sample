@@ -1,9 +1,27 @@
+
+# Ambiente en el que despliega la aplicación
 NODE_ENV=development
-HTTP_PORT=9000
+
+# Puerto que será usado por la aplicacion para escuchar peticiones
+HTTP_PORT=0000
+
+# IP del servidor que aloja base de datos
 DB_HOSTNAME=127.0.0.1
+
+# Usuario de base de datos
 DB_USERNAME=root
+
+# Clave de usuario de base de datos
 DB_PASSWORD=root
+
+# Nombre de base de datos
 DB_NAME=todolist
+
+# Tipo del motor de la base de datos
 DIALEC=postgres
+
+# Cadena de caracteres que será usado como llave secreta para generar los token de autenticación
 JWT_SECRET=ssdsdsdds
+
+# Debe ser un valor compatible con esta libreria: https://github.com/zeit/ms
 JWT_EXPIRATION=1h

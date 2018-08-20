@@ -1,4 +1,4 @@
 module.exports = {
-  DONE: 2,
-  PENDING: 1,
+  DONE: 1,
+  PENDING: 0,
 };

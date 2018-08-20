@@ -5,7 +5,7 @@ const taskRepository = {
   updateTaskDescriptionById: async () => true,
 }
 
-describe('Test unitarios update task description', async () => {
+describe('Test unitarios "update task description" ', async () => {
   it('Debe retornar "the description is required." si no hay description', async () => {
     const task = {
       id: 1,

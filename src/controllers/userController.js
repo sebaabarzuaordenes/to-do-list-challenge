@@ -1,8 +1,8 @@
-const createUserUseCase = require('../use_case/userCreate');
+const createUserUseCase = require('../use_case/createUser');
 const loginUseCase = require('../use_case/login');
 const userRepository = require('../repositories/userRepository');
 
-async function userCreate (user){
+async function createUser (user){
   try {
     return await createUserUseCase(user, userRepository);
   } catch (e) {
@@ -27,7 +27,7 @@ async function getAllUsers (){
 };
 
 module.exports = {
-  userCreate: userCreate,
+  createUser: createUser,
   getAllUsers: getAllUsers,
   authentication: authentication
 };

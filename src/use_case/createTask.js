@@ -1,6 +1,4 @@
-// const { ADMINISTRATOR, USER } = require('../consts/profiles');
-
-async function taskCreate(task, taskRepository) {
+async function createTask(task, taskRepository) {
   if (!task) {
     throw new Error('Task does not be falsy.');
   }
@@ -13,4 +11,4 @@ async function taskCreate(task, taskRepository) {
   return await taskRepository.create(task);
 }
 
-module.exports = taskCreate;
+module.exports = createTask;

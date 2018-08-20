@@ -9,17 +9,16 @@ A [Node js](https://nodejs.org/en/) application
 
 ## Technologies
 
+* Node js  
 * Express js
-* Node.js  
 * Sequelize js
+* JSON Web Tokens js
 * Unit js
+* ESLint
 
 ## Installation
 
 If you have already cloned the project, you can install the dependencies
-
-> **Note:**
-> For now you can only run the test
 
 ```sh
 $ cd path/of/your/project
@@ -38,22 +37,21 @@ $ cp env_sample .env
 ```
 
 > **Note:**
-> The values of the variables depend on your local environment, but remember that you can perform the test of this api
-> using docker which is explained below.
+> The values of the variables depend on the settings on your local machine
 
 ```
 $ cd path/of/yourproyect
 $ cp env_sample .env
 ```
 
-## Database Migration
+## Database schema Migration 
 
 ```sh
 $ cd path/of/your/project
 $ npx sequelize db:migrate
 ```
 
-## Delete Database
+## Delete Database schema
 
 ```sh
 $ cd path/of/your/project
@@ -67,7 +65,11 @@ $ cd path/of/your/project
 $ npm start
 ```
 
-## Docker deployment
+## Docker deployment (OPTIONAL)
+
+> **Note:**
+> If you do not want to install any service such as node, database engines etc etc in your local machine, you can
+> simply install "docker" and deploy it from there
 
 You'll need `docker` and `docker-compose` installed in your system.
 

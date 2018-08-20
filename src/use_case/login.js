@@ -3,7 +3,7 @@ const jwt = new Jwt();
 const md5 = require('md5');
 async function login(user, userRepository) {
   if (!user) {
-    throw new Error('The user entered does not be falsy.');
+    throw new Error('User does not be falsy.');
   }
 
   if (!user.userName || !user.password) {
@@ -23,12 +23,6 @@ async function login(user, userRepository) {
   };
 
   const token = await jwt.createToken(payload);
-  // const responde = {
-  //   data: {
-  //     'token': token,
-  //     'expiresIn': jwt.config().expiresIn
-  //   }
-  // };
   return {
       token: token
   }
