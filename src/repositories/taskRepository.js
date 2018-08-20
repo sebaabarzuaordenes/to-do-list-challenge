@@ -1,6 +1,6 @@
 const models = require('./db/models');
 const { PENDING } = require('../consts/taskStatus');
-// var _ = require('lodash');
+var _ = require('lodash');
 
 function create(task) {
   return models.Task.create(task)
@@ -52,9 +52,9 @@ function updateTaskToDoneById(task) {
 };
 
 function bulkCreateTask(taskslist) {
-  return models.Task.bulkCreate(taskslist, {returning:true})
+  return models.Task.bulkCreate(taskslist, { returning: true })
     .then(response => {
-      return response; 
+      return response;
       // return true
     })
     .catch(e => {
@@ -64,11 +64,11 @@ function bulkCreateTask(taskslist) {
 
 function updateTaskToDonedBulk(taskslist) {
   return models.Task.update(
-    { 
+    {
       number: 1,
       status: "DONE"
     },
-    { where: { 'id': {in: taskslist}, status: PENDING } }
+    { where: { 'id': { in: taskslist }, status: PENDING } }
 
   )
     .then(response => {
@@ -80,11 +80,35 @@ function updateTaskToDonedBulk(taskslist) {
 }
 
 
+function updateTaskDescriptionBulk(taskslist) {
+  console.log('taskslist', taskslist);
+  Promise
+    .all(_.map(taskslist, (task) => {
+      const { description, id } = task;
+      return models.Task
+        .update({
+          description: description,
+        }, {
+            where: { id: id },
+            // returning: true,
+            // plain: true,
+          });
+    }))
+    .then(results => {
+      console.log('results', results);
+      return true;
+    })
+    .catch((err) => {
+      throw({ error: true, message: err.message ? err.message : 'Unable to fetch updated user details' });
+    });
+};
+
 module.exports = {
   create: create,
   findAll: findAll,
   updateTaskDescriptionById: updateTaskDescriptionById,
   updateTaskToDoneById: updateTaskToDoneById,
   bulkCreateTask: bulkCreateTask,
-  updateTaskToDonedBulk: updateTaskToDonedBulk
+  updateTaskToDonedBulk: updateTaskToDonedBulk,
+  updateTaskDescriptionBulk: updateTaskDescriptionBulk
 };

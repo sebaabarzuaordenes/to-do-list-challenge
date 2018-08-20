@@ -107,10 +107,10 @@ app.post('/bulkCreateTask', async (req, res, next) => {
   }
 });
 
-app.patch('/updateTaskDescriptionById', async (req, res, next) => {
+app.patch('/updateTaskToDoneBulk', async (req, res, next) => {
   const taskslist = req.body;
   try {
-    const resp = await taskController.updateTaskDescriptionById(taskslist);
+    const resp = await taskController.updateTaskToDoneBulk(taskslist);
     res.send(resp);
   }
   catch (e) {
@@ -118,10 +118,10 @@ app.patch('/updateTaskDescriptionById', async (req, res, next) => {
   }
 });
 
-app.patch('/updateTaskToDonedBulk', async (req, res, next) => {
+app.patch('/updateTaskDescriptionBulk', async (req, res, next) => {
   const taskslist = req.body;
   try {
-    const resp = await taskController.updateTaskToDonedBulk(taskslist);
+    const resp = await taskController.updateTaskDescriptionBulk(taskslist);
     res.send(resp);
   }
   catch (e) {

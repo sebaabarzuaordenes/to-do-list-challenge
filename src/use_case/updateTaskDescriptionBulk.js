@@ -1,13 +1,13 @@
-async function updateTaskDescriptionBulk(taskIdsCollection, taskRepository) {
-  if (!taskIdsCollection) {
-    throw new Error('taskIdsCollection can not be falsy.');
+async function updateTaskDescriptionBulk(taskCollection, taskRepository) {
+  if (!taskCollection) {
+    throw new Error('taskCollection can not be falsy.');
   }
   
-  if (taskIdsCollection.length == 0 ) {
-    throw new Error('Empty taskIdsCollection, must contain at least one item.');
+  if (taskCollection.length == 0 ) {
+    throw new Error('Empty taskCollection, must contain at least one item.');
   }
 
-  return await taskRepository.updateTaskDescriptionBulk(taskIdsCollection);
+  return await taskRepository.updateTaskDescriptionBulk(taskCollection);
 }
 
 module.exports = updateTaskDescriptionBulk;

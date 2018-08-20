@@ -7,35 +7,35 @@ const taskRepository = {
 
 describe('Test unitarios Update Tasks Descriptions Bulk" ', async () => {
   
-  it('Debe retornar "taskIdsCollection can not be falsy." si la task es undefined', async () => {
-    let taskIdsCollection = null;
+  it('Debe retornar "taskCollection can not be falsy." si la task es undefined', async () => {
+    let taskCollection = null;
     let result;
     try {
-      await useCaseUpdateTaskDescriptionBulk(taskIdsCollection, taskRepository);
+      await useCaseUpdateTaskDescriptionBulk(taskCollection, taskRepository);
     } catch (error) {
       result = error.message;
     }
-    value(result).is('taskIdsCollection can not be falsy.');
+    value(result).is('taskCollection can not be falsy.');
   });
   
-  it('Debe retornar "Empty taskIdsCollection, must contain at least one item." si taskIdsCollection a modificar viene vacia', async () => {
-    let taskIdsCollection = [];
+  it('Debe retornar "Empty taskCollection, must contain at least one item." si taskCollection a modificar viene vacia', async () => {
+    let taskCollection = [];
     let result;
     try {
-      await useCaseUpdateTaskDescriptionBulk(taskIdsCollection, taskRepository);
+      await useCaseUpdateTaskDescriptionBulk(taskCollection, taskRepository);
     } catch (error) {
       result = error.message;
     }
-    value(result).is('Empty taskIdsCollection, must contain at least one item.');
+    value(result).is('Empty taskCollection, must contain at least one item.');
   });
 
   it('Debe retornar "true" si el estatus de la tarea se actualizo con éxito', async () => {
-    let taskIdsCollection = {
+    let taskCollection = {
       id: 1,
-      status: "done"
+      description: "modificado"
     };
 
-    const result = await useCaseUpdateTaskDescriptionBulk(taskIdsCollection, taskRepository);
+    const result = await useCaseUpdateTaskDescriptionBulk(taskCollection, taskRepository);
     value(result).isTrue();
   });
 

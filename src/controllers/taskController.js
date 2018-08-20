@@ -4,6 +4,7 @@ const useCaseUpdateTaskDescriptionById = require('../use_case/updateTaskDescript
 const useCaseUpdateTaskToDoneById = require('../use_case/updateTaskToDoneById');
 const useCaseBulkCreateTask = require('../use_case/bulkCreateTask');
 const useCaseUpdateTaskToDoneBulk = require('../use_case/updateTaskToDoneBulk');
+const useCaseUpdateTaskDescriptionBulk = require('../use_case/updateTaskDescriptionBulk');
 
 
 
@@ -49,7 +50,6 @@ async function bulkCreateTask (taskList){
   }
 };
 
-
 async function updateTaskToDoneBulk (taskList){
   try {
     return await useCaseUpdateTaskToDoneBulk(taskList, taskRepository);
@@ -58,6 +58,14 @@ async function updateTaskToDoneBulk (taskList){
   }
 };
 
+
+async function updateTaskDescriptionBulk (taskList){
+  try {
+    return await useCaseUpdateTaskDescriptionBulk(taskList, taskRepository);
+  } catch (e) {
+    throw e;
+  }
+};
 
 
 
@@ -68,7 +76,8 @@ module.exports = {
   updateDescriptionById: updateDescriptionById,
   updateTaskToDoneById: updateTaskToDoneById,
   bulkCreateTask: bulkCreateTask,
-  updateTaskToDoneBulk: updateTaskToDoneBulk
+  updateTaskToDoneBulk: updateTaskToDoneBulk,
+  updateTaskDescriptionBulk: updateTaskDescriptionBulk
   
 };
 
