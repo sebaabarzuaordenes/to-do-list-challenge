@@ -99,7 +99,7 @@ function updateTaskDescriptionBulk(taskslist) {
       return true;
     })
     .catch((err) => {
-      throw({ error: true, message: err.message ? err.message : 'Unable to fetch updated user details' });
+      throw({ error: true, message: err.message ? err.message : 'Unable to fetch updated task' });
     });
 };
 
