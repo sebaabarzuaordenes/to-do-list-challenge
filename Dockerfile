@@ -28,4 +28,4 @@ COPY . .
 USER node
 
 # Inicia la aplicación
-CMD ["npm", "test"]
+CMD ["npm", "start"]

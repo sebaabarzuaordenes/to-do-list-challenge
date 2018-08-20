@@ -1,6 +1,6 @@
 const models = require('./db/models');
-const { PENDING, DONE } = require('../consts/taskStatus');
-var _ = require('lodash');
+const { PENDING } = require('../consts/taskStatus');
+// var _ = require('lodash');
 
 function create(task) {
   return models.Task.create(task)
@@ -15,7 +15,6 @@ function create(task) {
 function findAll() {
   return models.Task.findAll()
     .then(tasks => {
-      console.log('findAll tasks', tasks);
       return tasks;
     })
     .catch(e => {
@@ -73,7 +72,6 @@ function updateTaskToDonedBulk(taskslist) {
 
   )
     .then(response => {
-      console.log('respository response', response)
       return response;
     })
     .catch(e => {
@@ -90,29 +88,3 @@ module.exports = {
   bulkCreateTask: bulkCreateTask,
   updateTaskToDonedBulk: updateTaskToDonedBulk
 };
-
-// function bulkCreateTask(taskslist) {
-//   return models.Task.bulkCreate(taskslist)
-//     .then(response => {
-      
-//       let number = _.map(response, function (inst) {
-//         console.log('inst', inst);
-//         return inst.number;
-//       });
-//       return models; 
-      
-//     })
-
-//     .then((number) => {
-//       console.log('number', number);
-//       // const result = models.Task.findAll({where: {number: {$in: number}}})
-//       console.log('result');
-//       // console.log('repository bulkCreateTask {response}', response);
-//       // return models.Task.findAll();
-//       return result;
-//       // return response;
-//     })
-//     .catch(e => {
-//       throw e;
-//     });
-// }

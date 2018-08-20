@@ -3,6 +3,10 @@
 A [Node js](https://nodejs.org/en/) application
 
 
+- [x] Unit test
+- [x] Deployment with PostgreSQL
+- [ ] Deployment with MySQL
+
 ## Prerequisites
 
 * This project require [Node.js](https://nodejs.org/) v8+ or newer

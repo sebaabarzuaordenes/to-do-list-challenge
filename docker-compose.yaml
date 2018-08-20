@@ -27,6 +27,8 @@ services:
      context: ./todo/
     volumes:
       - ./todo/:/usr/src/app
+    env_file:
+      - ./todo/.env
     ports:
       - "3000:3000"
     depends_on:
@@ -42,12 +44,5 @@ services:
 # imágenes creadas anteriormente
 # 
 # docker-compose up -d
-
 # Comando para detener y remover contenedores
 # docker-compose down
-
-
-#sudo docker-compose -f docker-compose.yml up
-
-
-    
